@@ -18,8 +18,13 @@ function BatchManager( opts ){
   // manager variable options
   this._opts = opts || {};
   if( !this._opts.flooding ){ this._opts.flooding = {}; }
-  if( !this._opts.flooding.pause ){ this._opts.flooding.pause = 10; } //50
-  if( !this._opts.flooding.resume ){ this._opts.flooding.resume = 2; } //8
+  // This represents the maximum number of concurrent requests to allow out at once.
+  if( !this._opts.flooding.pause ){ this._opts.flooding.pause = this._opts.dbclient.maxActiveRequests || 10; } //50
+  // When to resume sending bulk requests to server (# of active requests)
+  if( !this._opts.flooding.resume ){ this._opts.flooding.resume = this._opts.dbclient.resumeRequestCount || 2; } //8
+
+  // Set this from configuration fallback if it exists.
+  if( !this._opts.batchSize && this._opts.dbclient.batchSize){  this._opts.batchSize = this._opts.dbclient.batchSize}
 
   // internal variables
   this._current = new Batch( this._opts );
