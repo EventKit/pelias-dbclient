@@ -1,14 +1,13 @@
->This repository is part of the [Pelias](https://github.com/pelias/pelias)
+>This repository is forked from the [Pelias](https://github.com/pelias/pelias)
 >project. Pelias is an open-source, open-data geocoder originally sponsored by
 >[Mapzen](https://www.mapzen.com/). Our official user documentation is
->[here](https://github.com/pelias/documentation).
+>[here](https://github.com/eventkit/pelias-documentation).
 
 # Pelias Elasticsearch database client
 
 This module provides a Node.js stream for bulk-inserting documents into [Elasticsearch](https://www.elastic.co/products/elasticsearch).
 
-[![Build Status](https://travis-ci.org/pelias/dbclient.png?branch=master)](https://travis-ci.org/pelias/dbclient)
-[![Greenkeeper badge](https://badges.greenkeeper.io/pelias/dbclient.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/eventkit/pelias-dbclient.png?branch=master)](https://travis-ci.org/eventkit/pelias-dbclient)
 
 ## Install Dependencies
 
