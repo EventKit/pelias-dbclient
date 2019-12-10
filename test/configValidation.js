@@ -11,7 +11,8 @@ module.exports.tests.validate = function(test, common) {
     var config = {
       esclient: {},
       schema: {
-        indexName: 'index_name'
+        indexName: 'example_index',
+        typeName: 'example_type'
       }
     };
 
@@ -27,13 +28,14 @@ module.exports.tests.validate = function(test, common) {
       dbclient: {},
       esclient: {},
       schema: {
-        indexName: 'index_name'
+        indexName: 'example_index',
+        typeName: 'example_type'
       }
     };
 
     t.throws(function() {
       configValidation.validate(config);
-    }, /"statFrequency" is required/, 'dbclient.statFrequency should exist');
+    }, /"dbclient.statFrequency" is required/, 'dbclient.statFrequency should exist');
     t.end();
 
   });
@@ -46,13 +48,14 @@ module.exports.tests.validate = function(test, common) {
         },
         esclient: {},
         schema: {
-          indexName: 'index_name'
+          indexName: 'example_index',
+          typeName: 'example_type'
         }
       };
 
       t.throws(function() {
         configValidation.validate(config);
-      }, /"statFrequency" must be a number/, 'dbclient.statFrequency should be a number');
+      }, /"dbclient.statFrequency" must be a number/, 'dbclient.statFrequency should be a number');
 
     });
 
@@ -67,13 +70,14 @@ module.exports.tests.validate = function(test, common) {
       },
       esclient: {},
       schema: {
-        indexName: 'index_name'
+        indexName: 'example_index',
+        typeName: 'example_type'
       }
     };
 
     t.throws(function() {
       configValidation.validate(config);
-    }, /"statFrequency" must be an integer/, 'dbclient.statFrequency should be an integer');
+    }, /"dbclient.statFrequency" must be an integer/, 'dbclient.statFrequency should be an integer');
 
     t.end();
 
@@ -87,13 +91,14 @@ module.exports.tests.validate = function(test, common) {
         },
         esclient: value,
         schema: {
-          indexName: 'index_name'
+          indexName: 'example_index',
+          typeName: 'example_type'
         }
       };
 
       t.throws(function() {
         configValidation.validate(config);
-      }, /"esclient" must be an object/, 'esclient should be an object');
+      }, /"esclient" must be of type object/, 'esclient should be an object');
 
     });
 
@@ -111,13 +116,14 @@ module.exports.tests.validate = function(test, common) {
           requestTimeout: value
         },
         schema: {
-          indexName: 'index_name'
+          indexName: 'example_index',
+          typeName: 'example_type'
         }
       };
 
       t.throws(function() {
         configValidation.validate(config);
-      }, /"requestTimeout" must be a number/, 'esclient.requestTimeout should be a number');
+      }, /"esclient.requestTimeout" must be a number/, 'esclient.requestTimeout should be a number');
     });
 
     t.end();
@@ -133,13 +139,14 @@ module.exports.tests.validate = function(test, common) {
         requestTimeout: 17.3
       },
       schema: {
-        indexName: 'index_name'
+        indexName: 'example_index',
+        typeName: 'example_type'
       }
     };
 
     t.throws(function() {
       configValidation.validate(config);
-    }, /"requestTimeout" must be an integer/, 'esclient.requestTimeout should be an integer');
+    }, /"esclient.requestTimeout" must be an integer/, 'esclient.requestTimeout should be an integer');
 
     t.end();
 
@@ -154,13 +161,14 @@ module.exports.tests.validate = function(test, common) {
         requestTimeout: -1
       },
       schema: {
-        indexName: 'index_name'
+        indexName: 'example_index',
+        typeName: 'example_type'
       }
     };
 
     t.throws(function() {
       configValidation.validate(config);
-    }, /"requestTimeout" must be larger than or equal to 0/, 'esclient.requestTimeout must be positive');
+    }, /"esclient.requestTimeout" must be larger than or equal to 0/, 'esclient.requestTimeout must be positive');
 
     t.end();
 
@@ -178,7 +186,7 @@ module.exports.tests.validate = function(test, common) {
 
       t.throws(function() {
         configValidation.validate(config);
-      }, /"schema" must be an object/);
+      }, /"schema" must be of type object/);
 
     });
 
@@ -200,7 +208,7 @@ module.exports.tests.validate = function(test, common) {
 
       t.throws(function() {
         configValidation.validate(config);
-      }, /"indexName" must be a string/);
+      }, /"schema.indexName" must be a string/);
 
     });
 
@@ -219,7 +227,7 @@ module.exports.tests.validate = function(test, common) {
 
     t.throws(function() {
       configValidation.validate(config);
-    }, /"indexName" is required/);
+    }, /"schema.indexName" is required/);
     t.end();
 
   });
@@ -231,7 +239,8 @@ module.exports.tests.validate = function(test, common) {
       },
       esclient: {},
       schema: {
-        indexName: 'index_name'
+        indexName: 'example_index',
+        typeName: 'example_type'
       }
     };
 
@@ -258,7 +267,8 @@ module.exports.tests.validate = function(test, common) {
         requestTimeout: 17
       },
       schema: {
-        indexName: 'index_name'
+        indexName: 'example_index',
+        typeName: 'example_type'
       }
     };
 
@@ -286,7 +296,8 @@ module.exports.tests.validate = function(test, common) {
         requestTimeout: 17
       },
       schema: {
-        indexName: 'index_name'
+        indexName: 'example_index',
+        typeName: 'example_type'
       }
     };
 
@@ -307,9 +318,9 @@ module.exports.tests.validate = function(test, common) {
         }
       }).validate(config);
 
-    }, /elasticsearch index index_name does not exist/);
+    }, /elasticsearch index example_index does not exist/);
 
-    t.ok(stderr.match(/ERROR: Elasticsearch index index_name does not exist/));
+    t.ok(stderr.match(/ERROR: Elasticsearch index example_index does not exist/));
 
     unhook_intercept();
     t.end();
