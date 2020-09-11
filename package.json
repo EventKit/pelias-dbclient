@@ -3,7 +3,7 @@
   "version": "0.0.0-development",
   "description": "Database client for Pelias import pipelines",
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=10.0.0"
   },
   "main": "index.js",
   "scripts": {
@@ -38,7 +38,7 @@
   "dependencies": {
     "@hapi/joi": "^16.0.0",
     "elasticsearch": "^16.0.0",
-    "pelias-config": "^4.5.0",
+    "pelias-config": "git://github.com/eventkit/pelias-config.git#v4.12.1.1",
     "pelias-logger": "^1.2.1",
     "through2": "^3.0.0"
   },
