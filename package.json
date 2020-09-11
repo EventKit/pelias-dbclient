@@ -38,7 +38,7 @@
   "dependencies": {
     "@hapi/joi": "^16.0.0",
     "elasticsearch": "^16.0.0",
-    "pelias-config": "git://github.com/eventkit/pelias-config.git#syncUpstream",
+    "pelias-config": "git://github.com/eventkit/pelias-config.git#v4.12.1.1",
     "pelias-logger": "^1.2.1",
     "through2": "^3.0.0"
   },
